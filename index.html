@@ -1,127 +1,269 @@
+Index · HTML
+Copiar
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Hoja de Vida</title>
+    <title>Sergio Segura – Hoja de Vida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy: #1a2744;
+            --gold: #c9a84c;
+            --cream: #faf8f3;
+            --light: #f0ece0;
+            --text: #2d2d2d;
+            --muted: #7a7a7a;
+        }
+ 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
         }
-
+ 
+        /* ── HEADER ── */
         header {
-            background-color: #333;
+            background-color: var(--navy);
             color: white;
-            text-align: center;
-            padding: 1em 0;
+            padding: 50px 40px 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
         }
-
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
+        header::before {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            border: 2px solid rgba(201,168,76,0.25);
         }
-
-        h1, h2 {
-            color: #333;
+ 
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; right: 60px;
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            border: 2px solid rgba(201,168,76,0.15);
         }
-
-        .info {
+ 
+        .header-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+ 
+        .header-text .subtitle {
+            color: var(--gold);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+ 
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+ 
+        /* ── SIDEBAR ── */
+        .sidebar { display: flex; flex-direction: column; gap: 24px; }
+ 
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+ 
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--navy);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+ 
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 14px;
+        }
+ 
+        .contact-item:last-child { margin-bottom: 0; }
+ 
+        .contact-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+ 
+        .contact-value {
+            font-size: 0.9rem;
+            color: var(--text);
+            word-break: break-word;
+        }
+ 
+        /* ── MAIN CONTENT ── */
+        .main { display: flex; flex-direction: column; gap: 24px; }
+ 
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--navy);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+ 
+        .entry { margin-bottom: 20px; }
+        .entry:last-child { margin-bottom: 0; }
+ 
+        .entry-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
         }
-
-        .info div {
-            flex: 1;
-            padding: 10px;
-            margin: 0 5px;
-            background-color: #f0f0f0;
-            border-radius: 6px;
+ 
+        .entry-title {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--navy);
         }
-
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 20px;
+ 
+        .entry-date {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
-
-        @media screen and (max-width: 600px) {
-            .info {
-                flex-direction: column;
-            }
-
-            .profile-pic {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
+ 
+        .entry-org {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+ 
+        .entry ul {
+            padding-left: 18px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+ 
+        .entry ul li { margin-bottom: 4px; }
+ 
+        .entry p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+ 
+        /* ── DIVIDER between education entries ── */
+        .entry + .entry {
+            border-top: 1px solid var(--light);
+            padding-top: 16px;
+        }
+ 
+        /* ── RESPONSIVE ── */
+        @media (max-width: 620px) {
+            header { flex-direction: column; text-align: center; padding: 40px 24px 32px; }
+            .container { grid-template-columns: 1fr; }
+            .header-text h1 { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Mi Hoja de Vida</h1>
-    </header>
-
-    <section>
-        <div style="text-align: center;">
-            <img class="profile-pic" src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png" alt="Foto de perfil">
-        </div>
-    </section>
-
-    <section>
-        <h2>Datos Personales</h2>
-        <div class="info">
-            <div>
-                <h3>Nombre</h3>
-                <p>Sergio Alejandro Segura</p>
+ 
+<header>
+<div class="header-text">
+        <h1>Sergio Alejandro Segura</h1>
+        <p class="subtitle">Administración &amp; Gestión de Proyectos</p>
+    </div>
+</header>
+ 
+<div class="container">
+ 
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="card">
+            <h2 class="card-title">Contacto</h2>
+            <div class="contact-item">
+                <span class="contact-label">Correo</span>
+                <span class="contact-value">26004204@galileo.edu</span>
             </div>
-            <div>
-                <h3>Correo Electrónico</h3>
-                <p>26004204@galileo.edu</p>
+            <div class="contact-item">
+                <span class="contact-label">Teléfono</span>
+                <span class="contact-value">(502) 5556-6666</span>
             </div>
-            <div>
-                <h3>Teléfono</h3>
-                <p>(502) 5556666</p>
+            <div class="contact-item">
+                <span class="contact-label">País</span>
+                <span class="contact-value">Guatemala</span>
             </div>
         </div>
-    </section>
-
-    <section>
-        <h2>Experiencia Laboral</h2>
-        <div>
-            <h3>Coordinador Proyectos Educativo</h3>
-            <p>Mineduc | 2006</p>
-            <ul>
-                <li>Resposable de coordinar la elaboración de un directorio de colegios</li>
-                <li>Coordinando con empresa tercera para la elaboración del proyecto</li>
-            </ul>
+    </aside>
+ 
+    <!-- MAIN -->
+    <main class="main">
+ 
+        <div class="card">
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Coordinador de Proyectos Educativos</span>
+                    <span class="entry-date">2006</span>
+                </div>
+                <p class="entry-org">Ministerio de Educación (MINEDUC)</p>
+                <ul>
+                    <li>Responsable de coordinar la elaboración de un directorio de colegios.</li>
+                    <li>Coordinación con empresa tercera para la ejecución del proyecto.</li>
+                </ul>
+            </div>
         </div>
-
-
-    </section>
-
-    <section>
-        <h2>Educación</h2>
-        <div>
-            <h3>Maestría</h3>
-            <p>Escuela de Negocio - Guatemala | 2022</p>
-            <p>Maestría en Administración de proyectos</p>
+ 
+        <div class="card">
+            <h2 class="section-title">Educación</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Maestría en Administración de Proyectos</span>
+                    <span class="entry-date">2022</span>
+                </div>
+                <p class="entry-org">Escuela de Negocios – Guatemala</p>
+            </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Licenciatura en Administración de Empresas</span>
+                    <span class="entry-date">2004</span>
+                </div>
+                <p class="entry-org">Universidad – Guatemala</p>
+            </div>
         </div>
-                <div>
-            <h3>Licenciatura</h3>
-            <p>Universidad - Guatemala | 2004</p>
-            <p>Licenciatura en Administración de Empresas</p>
-        </div>
-    </section>
+ 
+    </main>
+</div>
+ 
 </body>
 </html>
